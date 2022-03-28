@@ -11,6 +11,31 @@ export const {
   config,
 } = createStitches({
   theme: {
-    colors: {},
+    colors: {
+      azure: '#1ea1f7',
+    },
+  },
+});
+
+export const globalStyles = globalCss({
+  '*': {
+    padding: 0,
+    margin: 0,
+    boxSizing: 'border-box',
+  },
+  body: {
+    height: '100vh',
+  },
+  '#__next': {
+    height: '100%',
+    position: 'relative',
+    zIndex: 0,
+  },
+  '#__next > div': {
+    height: '100%',
+  },
+  svg: {
+    display: 'block',
+    verticalAlign: 'middle',
   },
 });
