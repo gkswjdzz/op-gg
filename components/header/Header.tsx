@@ -21,7 +21,7 @@ const StyledInput = styled('input', {
   all: 'unset',
   width: 'stretch',
   boxSizing: 'border-box',
-  backgroundColor: '$white',
+  backgroundColor: '$white-two',
   borderRadius: 2,
   padding: '0 14px',
   height: 32,
