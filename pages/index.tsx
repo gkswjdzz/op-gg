@@ -9,14 +9,33 @@ import { SummonerTierInfo } from '../components/SummonerTierInfo';
 
 import { styled } from '../stitches.config';
 
-const HomeWrapper = styled('div', {});
+const HomeWrapper = styled('div', {
+  backgroundColor: '$white',
+});
 
 const HeaderWrapper = styled('div', {
   backgroundColor: '$azure',
   height: 97,
 });
 
-const Content = styled('main', {});
+const SummonerProfileWrapper = styled('main', {
+  borderBottom: '1px solid $white-three',
+  height: 175,
+});
+
+const Content = styled('main', {
+  width: 1000,
+  margin: '0 auto',
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+const Box = styled('div', {});
+
+const Flex = styled('div', {
+  display: 'flex',
+  gap: 10,
+});
 
 const Home: NextPage = () => {
   return (
@@ -24,12 +43,20 @@ const Home: NextPage = () => {
       <HeaderWrapper>
         <Header />
       </HeaderWrapper>
-      <Content>
+      <SummonerProfileWrapper>
         <SummonerProfile />
-        <SummonerTierInfo />
-        <SummonerMostInfo />
-        <SummonerMatchInfo />
-        <SummonerMatchDetail />
+      </SummonerProfileWrapper>
+      <Content>
+        <Flex>
+          <Box>
+            <SummonerTierInfo />
+            <SummonerMostInfo />
+          </Box>
+          <Box>
+            <SummonerMatchInfo />
+            <SummonerMatchDetail />
+          </Box>
+        </Flex>
       </Content>
     </HomeWrapper>
   );

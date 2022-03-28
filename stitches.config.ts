@@ -11,10 +11,23 @@ export const {
   config,
 } = createStitches({
   theme: {
+    fonts: {
+      helvetica: 'Helvetica',
+    },
+    fontWeights: {
+      normal: 'normal',
+      bold: 'bold',
+    },
     colors: {
       azure: '#1ea1f7',
-      white: '#ffffff',
+      white: '#eaeaea',
+      'white-two': '#ffffff',
+      'white-three': '#d8d8d8',
       warmGrey: '#727272',
+      'silver-two': '#d0d3d4',
+      silver: '#e0e3e3',
+      'slate-grey': '#657070',
+      charcoal: '#242929',
     },
   },
 });
