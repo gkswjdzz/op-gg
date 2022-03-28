@@ -11,12 +11,19 @@ import { styled } from '../stitches.config';
 
 const HomeWrapper = styled('div', {});
 
+const HeaderWrapper = styled('div', {
+  backgroundColor: '$azure',
+  height: 97,
+});
+
 const Content = styled('main', {});
 
 const Home: NextPage = () => {
   return (
     <HomeWrapper>
-      <Header />
+      <HeaderWrapper>
+        <Header />
+      </HeaderWrapper>
       <Content>
         <SummonerProfile />
         <SummonerTierInfo />

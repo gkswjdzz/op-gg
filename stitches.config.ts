@@ -13,6 +13,8 @@ export const {
   theme: {
     colors: {
       azure: '#1ea1f7',
+      white: '#ffffff',
+      warmGrey: '#727272',
     },
   },
 });
