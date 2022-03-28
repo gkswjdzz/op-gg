@@ -28,6 +28,7 @@ export const {
       warmGrey: '#727272',
       'silver-two': '#d0d3d4',
       silver: '#e0e3e3',
+      'silver-three': '#cdd2d2',
       'slate-grey': '#657070',
       charcoal: '#242929',
       'cool-grey': '#879292',

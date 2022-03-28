@@ -4,6 +4,14 @@ const nextConfig = {
   images: {
     domains: ['opgg-static.akamaized.net'],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/_/:path*',
+        destination: `https://codingtest.op.gg/api/:path*`,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

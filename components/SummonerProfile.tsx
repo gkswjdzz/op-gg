@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import { Text } from '../components/Text';
+import { useSummoner } from '../lib/API/useSummoner';
 
 import { styled } from '../stitches.config';
 
@@ -67,45 +68,44 @@ const ProfileInfoBox = styled('div', {
   gap: 4,
 });
 
+function numberWithCommas(x: number) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
 export const SummonerProfile = () => {
-  const previousTiers = [
-    {
-      division: 'string',
-      imageUrl:
-        'https://opgg-static.akamaized.net/images/profile_icons/profileIcon1625.jpg',
-      lp: 0,
-      name: 'string',
-      season: 0,
-      shortString: 'string',
-      string: 'string',
-      tier: 'string',
-      tierDivision: 'string',
-      tierRankPoint: 0,
-    },
-  ];
+  const {
+    previousTiers,
+    name,
+    level,
+    profileBorderImageUrl,
+    profileImageUrl,
+    ladderRank,
+  } = useSummoner('이한정');
+
+  if (!previousTiers || !profileImageUrl || !ladderRank) {
+    return null;
+  }
+
   const summoner = {
-    name: 'Hide on bush',
-    level: 94,
-    profileImageUrl:
-      'https://opgg-static.akamaized.net/images/profile_icons/profileIcon1625.jpg',
-    profileBorderImageUrl:
-      'https://opgg-static.akamaized.net/images/borders2/challenger.png',
-    ladderRank: {
-      rank: 239298,
-      rankPercentOfTop: 42,
-    },
+    name,
+    level,
+    profileImageUrl: profileImageUrl,
+    profileBorderImageUrl,
+    ladderRank: ladderRank,
   };
-  //opgg-static.akamaized.net/images/profile_icons/profileIcon1625.jpg
-  https: return (
+
+  return (
     <SummonerProfileWrapper>
       <TierBoxes>
-        {previousTiers.map((tier) => (
-          <TierBox key={tier.season}>
-            <Text>
-              <strong>S{tier.season}</strong> {tier.tier}
-            </Text>
-          </TierBox>
-        ))}
+        {previousTiers
+          .sort((a, b) => a.season - b.season)
+          .map((tier) => (
+            <TierBox key={tier.season}>
+              <Text>
+                <strong>S{tier.season}</strong> {tier.tier}
+              </Text>
+            </TierBox>
+          ))}
       </TierBoxes>
       <ProfileImage>
         <BorderBox
@@ -125,8 +125,8 @@ export const SummonerProfile = () => {
           {summoner.name}
         </Text>
         <Text size="11" css={{ color: '$slate-grey' }}>
-          레더 랭킹 {summoner.ladderRank.rank}위 (상위{' '}
-          {summoner.ladderRank.rank}
+          레더 랭킹 {numberWithCommas(summoner.ladderRank.rank)}위 (상위{' '}
+          {summoner.ladderRank.rankPercentOfTop}
           %)
         </Text>
       </ProfileInfoBox>
