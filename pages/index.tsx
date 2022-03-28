@@ -28,6 +28,7 @@ const Content = styled('main', {
   margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',
+  paddingTop: 10,
 });
 
 const Box = styled('div', {});
