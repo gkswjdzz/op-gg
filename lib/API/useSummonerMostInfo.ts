@@ -33,8 +33,7 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 export const useSummonerMostInfo = (name: string) => {
   const { data } = useSWR<TSummonerMostInfo>(
     `/api/_/summoner/${name}/mostInfo`,
-    fetcher,
-    { revalidateOnFocus: false, revalidateOnMount: false }
+    fetcher
   );
 
   const { champions, recentWinRate } = data || {};
