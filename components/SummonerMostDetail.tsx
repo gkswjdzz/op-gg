@@ -3,7 +3,7 @@ import { Text } from '../components/Text';
 
 import { TChampion, useSummonerMostInfo } from '../lib/API/useSummonerMostInfo';
 
-import { styled } from '../stitches.config';
+import { config, styled } from '../stitches.config';
 
 const SummonerMostDetailWrapper = styled('ul', {});
 
@@ -75,6 +75,24 @@ export const SummonerMostDetail = () => {
     return [kill.toFixed(1), death.toFixed(1), assist.toFixed(1)];
   };
 
+  const getKDATextColor = (score: number) => {
+    if (score >= 5.0) {
+      return '#e19205';
+    } else if (score >= 4.0) {
+      return '#1f8ecd';
+    } else if (score >= 3.0) {
+      return '#2daf7f';
+    } else {
+      return config.theme.colors['brownish-grey'];
+    }
+  };
+
+  const getWinRateTextColor = (winRate: number) => {
+    if (winRate >= 60) {
+      return '#c6443e';
+    }
+    return config.theme.colors['brownish-grey'];
+  };
   return (
     <SummonerMostDetailWrapper>
       {champions
@@ -114,8 +132,14 @@ export const SummonerMostDetail = () => {
                 </Text>
               </FlexColumn>
               <FlexColumn css={{ width: 100 }}>
-                <Text size={13} weight="bold" css={{ color: '$brownish-grey' }}>
-                  {getKDA(champion)}:1 평점
+                <Text
+                  size={13}
+                  weight="bold"
+                  css={{ color: getKDATextColor(Number(getKDA(champion))) }}
+                >
+                  {getKDA(champion) === 'PERFECT'
+                    ? 'PERFECT'
+                    : `${getKDA(champion)}:1 평점`}
                 </Text>
                 <Text size={11} css={{ color: '$cool-grey' }}>
                   {getAverageKDA(champion)[0]} / {getAverageKDA(champion)[1]} /{' '}
@@ -123,7 +147,13 @@ export const SummonerMostDetail = () => {
                 </Text>
               </FlexColumn>
               <FlexColumn>
-                <Text size={13} weight="bold" css={{ color: '$brownish-grey' }}>
+                <Text
+                  size={13}
+                  weight="bold"
+                  css={{
+                    color: getWinRateTextColor(Number(getWinRate(champion))),
+                  }}
+                >
                   {getWinRate(champion)}%
                 </Text>
                 <Text size={11} css={{ color: '$cool-grey' }}>
