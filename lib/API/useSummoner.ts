@@ -52,8 +52,9 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export const useSummoner = (name: string) => {
   const { data } = useSWR<{ summoner: TSummoner }>(
-    `https://codingtest.op.gg/api/summoner/${name}`,
-    fetcher
+    `/api/_/summoner/${name}`,
+    fetcher,
+    { revalidateOnFocus: false }
   );
 
   const { summoner } = data || {};
