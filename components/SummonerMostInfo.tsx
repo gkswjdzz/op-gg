@@ -32,6 +32,9 @@ const TabsTrigger = styled(Tabs.Trigger, {
   justifyContent: 'center',
   userSelect: 'none',
   border: '1px solid $silver-three',
+  '&:first-child': {
+    borderRight: 'none',
+  },
   '&[data-state="active"]': {
     backgroundColor: '$white-five',
     fontWeight: '$bold',
