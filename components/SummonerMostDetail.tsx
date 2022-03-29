@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Text } from '../components/Text';
 
-import { TChampion, useSummonerMostInfo } from '../lib/API/useSummonerMostInfo';
+import { TChampion } from '../lib/API/useSummonerMostInfo';
 
 import { config, styled } from '../stitches.config';
 
@@ -34,13 +34,11 @@ const Avartar = styled('div', {
   },
 });
 
-export const SummonerMostDetail = () => {
-  const { champions } = useSummonerMostInfo('이한정');
+interface SummonerMostDetailProps {
+  champions: TChampion[];
+}
 
-  if (!champions) {
-    return null;
-  }
-
+export const SummonerMostDetail = ({ champions }: SummonerMostDetailProps) => {
   champions.forEach((champion) => {
     champion.imageUrl = champion.imageUrl.startsWith('//')
       ? `https:${champion.imageUrl}`

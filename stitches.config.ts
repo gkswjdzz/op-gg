@@ -36,6 +36,7 @@ export const {
       gunmetal: '#555e5e',
       bluish: '#1f8ecd',
       'brownish-grey': '#5e5e5e',
+      coral: '#ee5a52',
     },
   },
 });

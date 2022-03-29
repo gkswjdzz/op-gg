@@ -4,6 +4,7 @@ import { SummonerMostDetail } from './SummonerMostDetail';
 import { SummonerMostWinLoss } from './SummonerMostWinLoss';
 
 import { styled } from '../stitches.config';
+import { useSummonerMostInfo } from '../lib/API/useSummonerMostInfo';
 
 const SummonerMostInfoWrapper = styled('div', {
   marginTop: 8,
@@ -48,6 +49,11 @@ const TabsContent = styled(Tabs.Content, {
 });
 
 export const SummonerMostInfo = () => {
+  const { champions, recentWinRate } = useSummonerMostInfo('이한정');
+
+  if (!champions || !recentWinRate) {
+    return null;
+  }
   return (
     <SummonerMostInfoWrapper>
       <TabsRoot defaultValue="tab1">
@@ -56,10 +62,10 @@ export const SummonerMostInfo = () => {
           <TabsTrigger value="tab2">7일간 랭크 승률</TabsTrigger>
         </TabsList>
         <TabsContent value="tab1">
-          <SummonerMostDetail />
+          <SummonerMostDetail champions={champions} />
         </TabsContent>
         <TabsContent value="tab2">
-          <SummonerMostWinLoss />
+          <SummonerMostWinLoss recentWinRate={recentWinRate} />
         </TabsContent>
       </TabsRoot>
     </SummonerMostInfoWrapper>
