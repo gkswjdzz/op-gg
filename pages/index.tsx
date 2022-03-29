@@ -53,7 +53,7 @@ const Home: NextPage = () => {
             <SummonerTierInfo />
             <SummonerMostInfo />
           </Box>
-          <Box>
+          <Box css={{ flex: 1 }}>
             <SummonerMatchInfo />
             <SummonerMatchDetail />
           </Box>

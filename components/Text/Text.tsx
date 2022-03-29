@@ -12,8 +12,14 @@ export const Text = styled('span', {
       13: {
         fontSize: '13px',
       },
+      14: {
+        fontSize: '14px',
+      },
       15: {
         fontSize: '15px',
+      },
+      16: {
+        fontSize: '16px',
       },
       20: {
         fontSize: '20px',

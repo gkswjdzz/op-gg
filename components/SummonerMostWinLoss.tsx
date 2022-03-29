@@ -107,7 +107,9 @@ export const SummonerMostWinLoss = ({
                   height={32}
                 />
               </Avartar>
-              <FlexColumn css={{ width: 75, alignItems: 'flex-start' }}>
+              <FlexColumn
+                css={{ width: 75, alignItems: 'flex-start', flexShrink: 0 }}
+              >
                 <Text
                   size={13}
                   weight="bold"

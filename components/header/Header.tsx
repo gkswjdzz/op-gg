@@ -27,7 +27,7 @@ const StyledInput = styled('input', {
   height: 32,
   fontSize: '12px',
   '&::placeholder': {
-    color: '$warmGrey',
+    color: '$warm-grey',
   },
 });
 
