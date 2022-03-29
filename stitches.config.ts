@@ -25,6 +25,7 @@ export const {
       'white-two': '#ffffff',
       'white-three': '#d8d8d8',
       'white-four': '#f2f2f2',
+      'white-five': '#ededed',
       warmGrey: '#727272',
       'silver-two': '#d0d3d4',
       silver: '#e0e3e3',
@@ -34,6 +35,7 @@ export const {
       'cool-grey': '#879292',
       gunmetal: '#555e5e',
       bluish: '#1f8ecd',
+      'brownish-grey': '#5e5e5e',
     },
   },
 });
