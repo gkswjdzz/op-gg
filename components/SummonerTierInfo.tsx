@@ -39,7 +39,7 @@ const League = (league: TLeague) => {
       </Box>
       <Box css={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
         <Text size={11} css={{ color: '$cool-grey' }}>
-          {league.tierRank.name} 랭크
+          {league.tierRank.name === '솔랭' ? '솔로 랭크' : league.tierRank.name}
         </Text>
         {/* TODO ???    
         <Text size={12} css={{ color: '#353a3a' }}>
