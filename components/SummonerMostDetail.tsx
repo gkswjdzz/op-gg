@@ -1,9 +1,17 @@
 import Image from 'next/image';
 import { Text } from '../components/Text';
 
+import {
+  getKDATextColor,
+  getKDA,
+  getAverageKDA,
+  getWinRateTextColor,
+  getWinRate,
+} from '../lib/common';
+
 import { TChampion } from '../lib/API/useSummonerMostInfo';
 
-import { config, styled } from '../stitches.config';
+import { styled } from '../stitches.config';
 
 const SummonerMostDetailWrapper = styled('ul', {});
 
@@ -45,52 +53,6 @@ export const SummonerMostDetail = ({ champions }: SummonerMostDetailProps) => {
       : champion.imageUrl;
   });
 
-  const getKDA = (champion: TChampion) => {
-    if (!champion.deaths) {
-      return 'PERFECT';
-    }
-
-    const kda = (champion.assists + champion.kills) / champion.deaths;
-    return kda.toFixed(2);
-  };
-
-  const getWinRate = (champion: TChampion) => {
-    if (!champion.games) {
-      return 100;
-    }
-
-    const rate = (champion.wins / champion.games) * 100;
-    return rate.toFixed(0);
-  };
-
-  const getAverageKDA = (champion: TChampion) => {
-    if (!champion.games) {
-      return [0, 0, 0];
-    }
-    const kill = champion.kills / champion.games;
-    const death = champion.deaths / champion.games;
-    const assist = champion.assists / champion.games;
-    return [kill.toFixed(1), death.toFixed(1), assist.toFixed(1)];
-  };
-
-  const getKDATextColor = (score: number) => {
-    if (score >= 5.0) {
-      return '#e19205';
-    } else if (score >= 4.0) {
-      return '#1f8ecd';
-    } else if (score >= 3.0) {
-      return '#2daf7f';
-    } else {
-      return config.theme.colors['brownish-grey'];
-    }
-  };
-
-  const getWinRateTextColor = (winRate: number) => {
-    if (winRate >= 60) {
-      return '#c6443e';
-    }
-    return config.theme.colors['brownish-grey'];
-  };
   return (
     <SummonerMostDetailWrapper>
       {champions
@@ -133,11 +95,26 @@ export const SummonerMostDetail = ({ champions }: SummonerMostDetailProps) => {
                 <Text
                   size={13}
                   weight="bold"
-                  css={{ color: getKDATextColor(Number(getKDA(champion))) }}
+                  css={{
+                    color: getKDATextColor(
+                      Number(
+                        getKDA(
+                          champion.kills,
+                          champion.deaths,
+                          champion.assists
+                        )
+                      )
+                    ),
+                  }}
                 >
-                  {getKDA(champion) === 'PERFECT'
+                  {getKDA(champion.kills, champion.deaths, champion.assists) ===
+                  'PERFECT'
                     ? 'PERFECT'
-                    : `${getKDA(champion)}:1 평점`}
+                    : `${getKDA(
+                        champion.kills,
+                        champion.deaths,
+                        champion.assists
+                      )}:1 평점`}
                 </Text>
                 <Text size={11} css={{ color: '$cool-grey' }}>
                   {getAverageKDA(champion)[0]} / {getAverageKDA(champion)[1]} /{' '}
@@ -149,10 +126,12 @@ export const SummonerMostDetail = ({ champions }: SummonerMostDetailProps) => {
                   size={13}
                   weight="bold"
                   css={{
-                    color: getWinRateTextColor(Number(getWinRate(champion))),
+                    color: getWinRateTextColor(
+                      Number(getWinRate(champion.wins, champion.losses))
+                    ),
                   }}
                 >
-                  {getWinRate(champion)}%
+                  {getWinRate(champion.wins, champion.losses)}%
                 </Text>
                 <Text size={11} css={{ color: '$cool-grey' }}>
                   {champion.games}게임
