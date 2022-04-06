@@ -49,3 +49,19 @@ export const getWinRateTextColor = (winRate: number) => {
   }
   return config.theme.colors['brownish-grey'];
 };
+
+export const positionImgSrc = {
+  TOP: '/icons/icon-mostposition-top.png',
+  JNG: '/icons/icon-mostposition-jng.png',
+  MID: '/icons/icon-mostposition-mid.png',
+  ADC: '/icons/icon-mostposition-adc.png',
+  SUP: '/icons/icon-mostposition-sup.png',
+};
+
+export const positionToHangul = {
+  TOP: '탑',
+  JNG: '정글',
+  MID: '미드',
+  ADC: '원딜',
+  SUP: '서포터',
+};

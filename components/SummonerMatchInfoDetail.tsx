@@ -1,9 +1,18 @@
+import Image from 'next/image';
+
 import { Text } from '../components/Text';
-import { TChampion, TSummary } from '../lib/API/useSummonerMatch';
-import { getKDA, getKDATextColor, getWinRate } from '../lib/common';
+import { MostChampionMatchInfo } from './MostChampionMatchInfo';
+
+import { TChampion, TPosition, TSummary } from '../lib/API/useSummonerMatch';
+import {
+  getKDA,
+  getKDATextColor,
+  getWinRate,
+  positionImgSrc,
+  positionToHangul,
+} from '../lib/common';
 
 import { styled } from '../stitches.config';
-import { MostChampionMatchInfo } from './MostChampionMatchInfo';
 
 const SummonerMatchInfoDetailWrapper = styled('div', {
   display: 'flex',
@@ -14,7 +23,6 @@ const SummonerMatchInfoDetailWrapper = styled('div', {
 
 const Flex = styled('div', {
   display: 'flex',
-  alignItems: 'center',
 });
 const FlexColumn = styled(Flex, {
   flexDirection: 'column',
@@ -45,18 +53,50 @@ const InnerCircle = styled('div', {
   justifyContent: 'center',
 });
 
+const PreferPositionWrapper = styled(FlexColumn, {
+  padding: '16px 0 16px 16px',
+  gap: 22,
+  width: '100%',
+});
+
+const PreferPosition = styled(Flex, {
+  gap: 8,
+  alignItems: 'center',
+  height: 30,
+});
+
+const PreferPositionSecondTexts = styled(Flex, {
+  gap: 6,
+  alignItems: 'center',
+  height: 13,
+});
+
 const Span = styled('span', {});
+const Box = styled('div', {});
 
 interface SummonerMatchInfoDetailProps {
   summary: TSummary;
   champions: TChampion[];
+  positions: TPosition[];
 }
+
 export const SummonerMatchInfoDetail = ({
   summary,
   champions,
+  positions,
 }: SummonerMatchInfoDetailProps) => {
   const winRate = getWinRate(summary.wins, summary.losses);
   const kda = getKDA(summary.kills, summary.deaths, summary.assists);
+  const totalGames = summary.wins + summary.losses;
+
+  const getPositionPickRate = (total: number, pick: number) => {
+    console.log(total, pick);
+    if (!total) {
+      return 0;
+    }
+
+    return Math.floor((pick / total) * 100);
+  };
   return (
     <SummonerMatchInfoDetailWrapper>
       <Flex css={{ width: 260, borderRight: '1px solid $silver-three' }}>
@@ -110,7 +150,48 @@ export const SummonerMatchInfoDetail = ({
         <MostChampionMatchInfo champion={champions[1]} />
         <MostChampionMatchInfo champion={champions[2]} />
       </FlexColumn>
-      <Flex css={{ width: 168, borderLeft: '1px solid $silver-three' }}></Flex>
+      <Flex css={{ width: 168, borderLeft: '1px solid $silver-three' }}>
+        <PreferPositionWrapper>
+          <Text size="12" css={{ color: '$brownish-grey-two' }}>
+            선호 포지션 (랭크)
+          </Text>
+          {positions.map((position) => (
+            <PreferPosition key={position.positionName}>
+              <Image
+                alt={position.positionName}
+                src={positionImgSrc[position.position]}
+                height={28}
+                width={28}
+              />
+              <FlexColumn>
+                <Text
+                  size="14"
+                  css={{ color: '$black', fontFamily: 'NanumBarunGothicOTF' }}
+                >
+                  {positionToHangul[position.position]}
+                </Text>
+                <PreferPositionSecondTexts>
+                  <Text size="11" css={{ color: '$bluish' }}>
+                    {getPositionPickRate(totalGames, position.games)}%
+                  </Text>
+                  <Box
+                    css={{ height: 12, borderRight: '1px solid $silver-three' }}
+                  />
+                  <Text
+                    size="11"
+                    css={{ color: '$black', fontFamily: '$helvetica' }}
+                  >
+                    승률{' '}
+                    <strong>
+                      {getWinRate(position.wins, position.losses)}%
+                    </strong>
+                  </Text>
+                </PreferPositionSecondTexts>
+              </FlexColumn>
+            </PreferPosition>
+          ))}
+        </PreferPositionWrapper>
+      </Flex>
     </SummonerMatchInfoDetailWrapper>
   );
 };

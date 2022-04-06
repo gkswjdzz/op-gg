@@ -72,7 +72,7 @@ export interface TPosition {
   games: number;
   wins: number;
   losses: number;
-  position: string;
+  position: 'TOP' | 'JNG' | 'MID' | 'ADC' | 'SUP';
   positionName: string;
 }
 

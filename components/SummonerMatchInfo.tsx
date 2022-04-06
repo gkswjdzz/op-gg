@@ -42,9 +42,9 @@ const TabsContent = styled(Tabs.Content, {
 });
 
 export const SummonerMatchInfo = () => {
-  const { summary, champions } = useSummonerMatch('이한정');
+  const { summary, champions, positions } = useSummonerMatch('이한정');
 
-  if (!summary || !champions) {
+  if (!summary || !champions || !positions) {
     return null;
   }
 
@@ -57,7 +57,11 @@ export const SummonerMatchInfo = () => {
           <TabsTrigger value="free">자유랭크</TabsTrigger>
         </TabsList>
         <TabsContent value="all">
-          <SummonerMatchInfoDetail summary={summary} champions={champions} />
+          <SummonerMatchInfoDetail
+            summary={summary}
+            champions={champions}
+            positions={positions.sort((a, b) => b.games - a.games)}
+          />
         </TabsContent>
         <TabsContent value="solo"></TabsContent>
         <TabsContent value="free"></TabsContent>
