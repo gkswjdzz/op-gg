@@ -1,18 +1,18 @@
 import Image from 'next/image';
 
-import { Text } from '../components/Text';
-import { MostChampionMatchInfo } from './MostChampionMatchInfo';
+import { Text } from '@/components/Text';
+import { MostChampionMatchInfo } from '@/components/MostChampionMatchInfo';
 
-import { TChampion, TPosition, TSummary } from '../lib/API/useSummonerMatch';
+import { TChampion, TPosition, TSummary } from '@/lib/API/useSummonerMatch';
 import {
   getKDA,
   getKDATextColor,
   getWinRate,
   positionImgSrc,
   positionToHangul,
-} from '../lib/common';
+} from '@/lib/common';
 
-import { styled } from '../stitches.config';
+import { styled } from '@/stitches.config';
 
 const SummonerMatchInfoDetailWrapper = styled('div', {
   display: 'flex',

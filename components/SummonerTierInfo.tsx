@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { Text } from '../components/Text';
-import { useSummoner, TLeague } from '../lib/API/useSummoner';
+import { Text } from '@/components/Text';
+import { useSummoner, TLeague } from '@/lib/API/useSummoner';
 
-import { styled } from '../stitches.config';
+import { styled } from '@/stitches.config';
 
 const SummonerTierInfoWrapper = styled('div', {
   width: 300,

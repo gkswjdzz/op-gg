@@ -1,5 +1,5 @@
-import { config } from '../stitches.config';
-import { TChampion } from './API/useSummonerMostInfo';
+import { config } from '@/stitches.config';
+import { TChampion } from '@/lib/API/useSummonerMostInfo';
 
 export const getKDATextColor = (score: number) => {
   if (score >= 5.0) {

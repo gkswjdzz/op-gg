@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
-import { Text } from '../components/Text';
-import { useSummoner } from '../lib/API/useSummoner';
+import { Text } from '@/components/Text';
+import { useSummoner } from '@/lib/API/useSummoner';
 
-import { styled } from '../stitches.config';
+import { styled } from '@/stitches.config';
 
 const SummonerProfileWrapper = styled('div', {
   width: 1000,

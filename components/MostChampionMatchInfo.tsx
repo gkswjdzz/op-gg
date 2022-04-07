@@ -1,14 +1,15 @@
 import Image from 'next/image';
-import { Text } from '../components/Text';
-import { TChampion } from '../lib/API/useSummonerMatch';
+
+import { Text } from '@/components/Text';
+import { TChampion } from '@/lib/API/useSummonerMatch';
 import {
   getKDA,
   getKDATextColor,
   getWinRate,
   getWinRateTextColor,
-} from '../lib/common';
+} from '@/lib/common';
 
-import { styled } from '../stitches.config';
+import { styled } from '@/stitches.config';
 
 const MostChampionMatchInfoWrapper = styled('div', {
   display: 'flex',
@@ -16,6 +17,7 @@ const MostChampionMatchInfoWrapper = styled('div', {
   marginLeft: 16,
   alignItems: 'center',
 });
+
 const Avartar = styled('div', {
   display: 'flex',
   alignItems: 'center',
@@ -31,7 +33,10 @@ const Flex = styled('div', {
 const FlexColumn = styled(Flex, {
   flexDirection: 'column',
 });
-const Box = styled('div', {});
+const VerticalLine = styled('div', {
+  height: 'inherit',
+  borderRight: '1px solid $silver-three',
+});
 
 interface MostChampionMatchInfoProps {
   champion: TChampion;
@@ -88,7 +93,7 @@ export const MostChampionMatchInfo = ({
           <Text size={11}>
             ({champion.wins}승 {champion.losses}패){' '}
           </Text>
-          <Box css={{ height: 12, borderRight: '1px solid $silver-three' }} />
+          <VerticalLine />
           <Text size={11} css={{ color: getKDATextColor(Number(kda)) }}>
             {kda} 평점
           </Text>

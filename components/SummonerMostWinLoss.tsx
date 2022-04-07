@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import { Text } from '../components/Text';
+import { Text } from '@/components/Text';
 
-import { TWinRate } from '../lib/API/useSummonerMostInfo';
+import { TWinRate } from '@/lib/API/useSummonerMostInfo';
 
-import { styled } from '../stitches.config';
+import { styled } from '@/stitches.config';
 
 const SummonerMostWinLossWrapper = styled('div', {});
 

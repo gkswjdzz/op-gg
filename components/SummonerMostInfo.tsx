@@ -1,10 +1,11 @@
 import * as Tabs from '@radix-ui/react-tabs';
 
-import { SummonerMostDetail } from './SummonerMostDetail';
-import { SummonerMostWinLoss } from './SummonerMostWinLoss';
+import { SummonerMostDetail } from '@/components/SummonerMostDetail';
+import { SummonerMostWinLoss } from '@/components/SummonerMostWinLoss';
 
-import { styled } from '../stitches.config';
-import { useSummonerMostInfo } from '../lib/API/useSummonerMostInfo';
+import { useSummonerMostInfo } from '@/lib/API/useSummonerMostInfo';
+
+import { styled } from '@/stitches.config';
 
 const SummonerMostInfoWrapper = styled('div', {
   marginTop: 8,

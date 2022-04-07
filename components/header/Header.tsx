@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { styled } from '../../stitches.config';
+import { styled } from '@/stitches.config';
 
 const StyledHeader = styled('header', {
   width: 1000,

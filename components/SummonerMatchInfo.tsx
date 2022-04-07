@@ -1,8 +1,10 @@
 import * as Tabs from '@radix-ui/react-tabs';
-import { useSummonerMatch } from '../lib/API/useSummonerMatch';
 
-import { styled } from '../stitches.config';
-import { SummonerMatchInfoDetail } from './SummonerMatchInfoDetail';
+import { SummonerMatchInfoDetail } from '@/components/SummonerMatchInfoDetail';
+
+import { useSummonerMatch } from '@/lib/API/useSummonerMatch';
+
+import { styled } from '@/stitches.config';
 
 const SummonerMatchInfoWrapper = styled('div', {
   flex: 1,

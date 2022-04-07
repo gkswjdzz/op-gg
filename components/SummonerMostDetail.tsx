@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Text } from '../components/Text';
+import { Text } from '@/components/Text';
 
 import {
   getKDATextColor,
@@ -7,11 +7,11 @@ import {
   getAverageKDA,
   getWinRateTextColor,
   getWinRate,
-} from '../lib/common';
+} from '@/lib/common';
 
-import { TChampion } from '../lib/API/useSummonerMostInfo';
+import { TChampion } from '@/lib/API/useSummonerMostInfo';
 
-import { styled } from '../stitches.config';
+import { styled } from '@/stitches.config';
 
 const SummonerMostDetailWrapper = styled('ul', {});
 
