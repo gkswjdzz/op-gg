@@ -27,9 +27,11 @@ const Avartar = styled('div', {
 
 const Flex = styled('div', {
   display: 'flex',
+});
+const FlexColumn = styled(Flex, {
   flexDirection: 'column',
 });
-const Span = styled('span', {});
+const Box = styled('div', {});
 
 interface MostChampionMatchInfoProps {
   champion: TChampion;
@@ -71,18 +73,27 @@ export const MostChampionMatchInfo = ({
           height={34}
         />
       </Avartar>
-      <Flex>
-        <Text size={14} color="black" css={{ marginBottom: 3 }}>
+      <FlexColumn>
+        <Text size={14} color="black" css={{ marginBottom: 3, height: 16 }}>
           {champion.name}
         </Text>
-        <Text size={11} color="greyish-brown">
-          <Span css={{ color: getWinRateTextColor(Number(winRate)) }}>
+        <Flex css={{ height: 13, alignItems: 'center', gap: 6 }}>
+          <Text
+            size={11}
+            color="greyish-brown"
+            css={{ color: getWinRateTextColor(Number(winRate)) }}
+          >
             {winRate}%
-          </Span>{' '}
-          ({champion.wins}승 {champion.losses}패){' '}
-          <Span css={{ color: getKDATextColor(Number(kda)) }}>{kda} 평점</Span>
-        </Text>
-      </Flex>
+          </Text>{' '}
+          <Text size={11}>
+            ({champion.wins}승 {champion.losses}패){' '}
+          </Text>
+          <Box css={{ height: 12, borderRight: '1px solid $silver-three' }} />
+          <Text size={11} css={{ color: getKDATextColor(Number(kda)) }}>
+            {kda} 평점
+          </Text>
+        </Flex>
+      </FlexColumn>
     </MostChampionMatchInfoWrapper>
   );
 };

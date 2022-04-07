@@ -90,7 +90,6 @@ export const SummonerMatchInfoDetail = ({
   const totalGames = summary.wins + summary.losses;
 
   const getPositionPickRate = (total: number, pick: number) => {
-    console.log(total, pick);
     if (!total) {
       return 0;
     }
@@ -100,10 +99,15 @@ export const SummonerMatchInfoDetail = ({
   return (
     <SummonerMatchInfoDetailWrapper>
       <Flex css={{ width: 260, borderRight: '1px solid $silver-three' }}>
-        <FlexColumn css={{ gap: 14, marginLeft: 8 }}>
+        <FlexColumn
+          css={{
+            gap: 14,
+            margin: '16px 0 0 8px',
+            alignItems: 'center',
+          }}
+        >
           <Text size={12} color="brownish-grey-two">
-            {summary.wins + summary.losses}전 {summary.wins}승 {summary.losses}
-            패
+            {totalGames}전 {summary.wins}승 {summary.losses}패
           </Text>
           <CircleInfo
             css={{
@@ -117,9 +121,11 @@ export const SummonerMatchInfoDetail = ({
         </FlexColumn>
         <FlexColumn
           css={{
-            marginRight: 34,
-            marginLeft: 'auto',
+            margin: '0 auto',
             gap: 4,
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 92,
           }}
         >
           <Text size={11} weight="bold" color="warm-grey-two">
@@ -142,7 +148,8 @@ export const SummonerMatchInfoDetail = ({
         css={{
           flex: 1,
           alignItems: 'flex-start',
-          justifyContent: 'space-around',
+          margin: 'auto 0',
+          gap: 12,
         }}
       >
         <MostChampionMatchInfo champion={champions[0]} />
