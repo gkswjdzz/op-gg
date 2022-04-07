@@ -101,7 +101,7 @@ export const SummonerMatchInfoDetail = ({
     <SummonerMatchInfoDetailWrapper>
       <Flex css={{ width: 260, borderRight: '1px solid $silver-three' }}>
         <FlexColumn css={{ gap: 14, marginLeft: 8 }}>
-          <Text size={12} css={{ color: '$brownish-grey-two' }}>
+          <Text size={12} color="brownish-grey-two">
             {summary.wins + summary.losses}전 {summary.wins}승 {summary.losses}
             패
           </Text>
@@ -122,12 +122,11 @@ export const SummonerMatchInfoDetail = ({
             gap: 4,
           }}
         >
-          <Text size={11} weight="bold" css={{ color: '$warm-grey-two' }}>
-            {summary.kills} /{' '}
-            <Span css={{ color: '#c6443e' }}>{summary.deaths}</Span> /{' '}
+          <Text size={11} weight="bold" color="warm-grey-two">
+            {summary.kills} / <Text color="reddish">{summary.deaths}</Text> /{' '}
             {summary.assists}
           </Text>
-          <Text size={16} css={{ color: '$warm-grey-two' }}>
+          <Text size={16} color="warm-grey-two">
             <Span
               css={{
                 color: getKDATextColor(Number(kda)),
@@ -135,7 +134,7 @@ export const SummonerMatchInfoDetail = ({
             >
               {kda}
             </Span>{' '}
-            <Span css={{ color: '#c6443e' }}>({winRate}%)</Span>
+            <Text color="reddish">({winRate}%)</Text>
           </Text>
         </FlexColumn>
       </Flex>
@@ -152,7 +151,7 @@ export const SummonerMatchInfoDetail = ({
       </FlexColumn>
       <Flex css={{ width: 168, borderLeft: '1px solid $silver-three' }}>
         <PreferPositionWrapper>
-          <Text size="12" css={{ color: '$brownish-grey-two' }}>
+          <Text size="12" color="brownish-grey-two">
             선호 포지션 (랭크)
           </Text>
           {positions.map((position) => (
@@ -164,23 +163,17 @@ export const SummonerMatchInfoDetail = ({
                 width={28}
               />
               <FlexColumn>
-                <Text
-                  size="14"
-                  css={{ color: '$black', fontFamily: 'NanumBarunGothicOTF' }}
-                >
+                <Text size="14" color="black" fontFamily="nanum">
                   {positionToHangul[position.position]}
                 </Text>
                 <PreferPositionSecondTexts>
-                  <Text size="11" css={{ color: '$bluish' }}>
+                  <Text size="11" color="bluish">
                     {getPositionPickRate(totalGames, position.games)}%
                   </Text>
                   <Box
                     css={{ height: 12, borderRight: '1px solid $silver-three' }}
                   />
-                  <Text
-                    size="11"
-                    css={{ color: '$black', fontFamily: '$helvetica' }}
-                  >
+                  <Text size="11" color="black" fontFamily="helvetica">
                     승률{' '}
                     <strong>
                       {getWinRate(position.wins, position.losses)}%

@@ -38,35 +38,21 @@ const League = (league: TLeague) => {
         />
       </Box>
       <Box css={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <Text size={11} css={{ color: '$cool-grey' }}>
+        <Text size={11} color="cool-grey">
           {league.tierRank.name === '솔랭' ? '솔로 랭크' : league.tierRank.name}
         </Text>
         {/* TODO ???    
         <Text size={12} css={{ color: '#353a3a' }}>
           탑 (총{league.wins + league.losses}게임)
         </Text> */}
-        <Text
-          size={15}
-          css={{
-            fontFamily: '$helvetica',
-            fontWeight: '$bold',
-            color: '$bluish',
-          }}
-        >
+        <Text size={15} color="bluish" weight="bold" fontFamily="helvetica">
           {league.tierRank.string}
         </Text>
-        <Text
-          size={12}
-          css={{
-            fontFamily: '$helvetica',
-            color: '$cool-grey',
-            fontWeight: '$bold',
-          }}
-        >
+        <Text size={12} weight="bold" color="cool-grey" fontFamily="helvetica">
           <Strong>{league.tierRank.lp} LP</Strong> / {league.wins}승{' '}
           {league.losses}패
         </Text>
-        <Text size={12} css={{ fontFamily: '$helvetica', color: '$cool-grey' }}>
+        <Text size={12} color="cool-grey" fontFamily="helvetica">
           승률{' '}
           {league.losses !== 0
             ? Math.floor((league.wins / (league.wins + league.losses)) * 100)

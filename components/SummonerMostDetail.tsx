@@ -76,9 +76,9 @@ export const SummonerMostDetail = ({ champions }: SummonerMostDetailProps) => {
                 <Text
                   size={13}
                   weight="bold"
+                  color="brownish-grey"
+                  fontFamily="apple"
                   css={{
-                    color: '$brownish-grey',
-                    fontFamily: '$apple',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
@@ -87,7 +87,7 @@ export const SummonerMostDetail = ({ champions }: SummonerMostDetailProps) => {
                 >
                   {champion.name}
                 </Text>
-                <Text size={11} css={{ color: '$cool-grey' }}>
+                <Text size={11} color="cool-grey">
                   CS {champion.cs}
                 </Text>
               </FlexColumn>
@@ -116,7 +116,7 @@ export const SummonerMostDetail = ({ champions }: SummonerMostDetailProps) => {
                         champion.assists
                       )}:1 평점`}
                 </Text>
-                <Text size={11} css={{ color: '$cool-grey' }}>
+                <Text size={11} color="cool-grey">
                   {getAverageKDA(champion)[0]} / {getAverageKDA(champion)[1]} /{' '}
                   {getAverageKDA(champion)[2]}
                 </Text>
@@ -133,7 +133,7 @@ export const SummonerMostDetail = ({ champions }: SummonerMostDetailProps) => {
                 >
                   {getWinRate(champion.wins, champion.losses)}%
                 </Text>
-                <Text size={11} css={{ color: '$cool-grey' }}>
+                <Text size={11} color="cool-grey">
                   {champion.games}게임
                 </Text>
               </FlexColumn>

@@ -121,10 +121,10 @@ export const SummonerProfile = () => {
         />
       </ProfileImage>
       <ProfileInfoBox>
-        <Text size="20" weight="bold" css={{ color: '$charcoal' }}>
+        <Text size="20" weight="bold" color="charcoal">
           {summoner.name}
         </Text>
-        <Text size="11" css={{ color: '$slate-grey' }}>
+        <Text size="11" color="slate-grey">
           레더 랭킹 {numberWithCommas(summoner.ladderRank.rank)}위 (상위{' '}
           {summoner.ladderRank.rankPercentOfTop}
           %)

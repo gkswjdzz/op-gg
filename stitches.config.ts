@@ -14,6 +14,7 @@ export const {
     fonts: {
       helvetica: 'Helvetica',
       apple: 'AppleSDGothicNeo',
+      nanum: 'NanumBarunGothicOTF',
     },
     fontWeights: {
       normal: 'normal',
@@ -41,6 +42,9 @@ export const {
       coral: '#ee5a52',
       'greyish-brown': '#555555',
       black: '#333333',
+      'yellow-ochre': '#e19205',
+      'bluey-green': '#2daf7f',
+      reddish: '#c6443e',
     },
   },
 });

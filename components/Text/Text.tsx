@@ -33,5 +33,48 @@ export const Text = styled('span', {
         fontWeight: '$normal',
       },
     },
+    fontFamily: {
+      apple: {
+        fontFamily: '$apple',
+      },
+      helvetica: {
+        fontFamily: '$helvetica',
+      },
+      nanum: {
+        fontFamily: '$nanum',
+      },
+    },
+    color: {
+      'brownish-grey': {
+        color: '$brownish-grey',
+      },
+      'brownish-grey-two': {
+        color: '$brownish-grey-two',
+      },
+      black: {
+        color: '$black',
+      },
+      bluish: {
+        color: '$bluish',
+      },
+      charcoal: {
+        color: '$charcoal',
+      },
+      'cool-grey': {
+        color: '$cool-grey',
+      },
+      'warm-grey-two': {
+        color: '$warm-grey-two',
+      },
+      'greyish-brown': {
+        color: '$greyish-brown',
+      },
+      'slate-grey': {
+        color: '$slate-grey',
+      },
+      reddish: {
+        color: '$reddish',
+      },
+    },
   },
 });

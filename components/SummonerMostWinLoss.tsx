@@ -113,20 +113,20 @@ export const SummonerMostWinLoss = ({
                 <Text
                   size={13}
                   weight="bold"
+                  color="brownish-grey"
+                  fontFamily="apple"
                   css={{
-                    fontFamily: '$apple',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
                     width: '100%',
-                    color: '$brownish-grey',
                   }}
                 >
                   {data.name}
                 </Text>
               </FlexColumn>
               <FlexColumn css={{ width: 50 }}>
-                <Text size={13} weight="bold" css={{ color: '$cool-grey' }}>
+                <Text size={13} weight="bold" color="cool-grey">
                   {getWinRate(data)}%
                 </Text>
               </FlexColumn>

@@ -3,11 +3,11 @@ import { TChampion } from './API/useSummonerMostInfo';
 
 export const getKDATextColor = (score: number) => {
   if (score >= 5.0) {
-    return '#e19205';
+    return config.theme.colors['yellow-ochre'];
   } else if (score >= 4.0) {
-    return '#1f8ecd';
+    return config.theme.colors['bluish'];
   } else if (score >= 3.0) {
-    return '#2daf7f';
+    return config.theme.colors['bluey-green'];
   } else {
     return config.theme.colors['brownish-grey'];
   }
@@ -45,7 +45,7 @@ export const getAverageKDA = (champion: TChampion) => {
 
 export const getWinRateTextColor = (winRate: number) => {
   if (winRate >= 60) {
-    return '#c6443e';
+    return config.theme.colors['reddish'];
   }
   return config.theme.colors['brownish-grey'];
 };

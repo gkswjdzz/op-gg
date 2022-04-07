@@ -48,7 +48,7 @@ export const MostChampionMatchInfo = ({
             height={34}
           />
         </Avartar>
-        <Text size={11} css={{ color: '$warm-grey-two' }}>
+        <Text size={11} color="warm-grey-two">
           챔피언 정보가 없습니다.
         </Text>
       </MostChampionMatchInfoWrapper>
@@ -72,10 +72,10 @@ export const MostChampionMatchInfo = ({
         />
       </Avartar>
       <Flex>
-        <Text size={14} css={{ color: '$black', marginBottom: 3 }}>
+        <Text size={14} color="black" css={{ marginBottom: 3 }}>
           {champion.name}
         </Text>
-        <Text size={11} css={{ color: '$greyish-brown' }}>
+        <Text size={11} color="greyish-brown">
           <Span css={{ color: getWinRateTextColor(Number(winRate)) }}>
             {winRate}%
           </Span>{' '}
