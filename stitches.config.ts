@@ -47,10 +47,14 @@ export const {
       'bluey-green': '#2daf7f',
       reddish: '#c6443e',
       'pinkish-grey': '#d6b5b2',
+      'pinkish-grey-three': '#d0a6a5',
       'pinkish-tan': '#e89c95',
       'light-blue-grey': '#b9ceea',
-      'perrywinkle': '#7fb0e1',
-      'brownish-pink': '#c8817c'
+      'light-grey-blue-two': '#94b9d6',
+      perrywinkle: '#7fb0e1',
+      'brownish-pink': '#c8817c',
+      'ugly-blue': '#2c709b',
+      scarlet: '#d0021b',
     },
   },
 });

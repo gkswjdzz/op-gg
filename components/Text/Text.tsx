@@ -25,6 +25,29 @@ export const Text = styled('span', {
         fontSize: '20px',
       },
     },
+    height: {
+      11: {
+        height: 11,
+      },
+      12: {
+        height: 12,
+      },
+      13: {
+        height: 13,
+      },
+      14: {
+        height: 14,
+      },
+      15: {
+        height: 15,
+      },
+      16: {
+        height: 16,
+      },
+      20: {
+        height: 20,
+      },
+    },
     weight: {
       bold: {
         fontWeight: '$bold',
@@ -74,6 +97,12 @@ export const Text = styled('span', {
       },
       reddish: {
         color: '$reddish',
+      },
+      'ugly-blue': {
+        color: '$ugly-blue',
+      },
+      scarlet: {
+        color: '$scarlet',
       },
     },
   },

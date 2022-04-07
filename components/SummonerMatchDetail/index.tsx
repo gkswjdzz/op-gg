@@ -1,7 +1,14 @@
+import Image from 'next/image';
+import { formatDistance } from 'date-fns';
+import { ko } from 'date-fns/locale';
+
+import { Text } from '@/components/Text';
+import { Avartar } from '@/components/Avartar';
+
 import { TGame } from '@/lib/API/useSummonerMatch';
 import { viewDetailImgSrc } from '@/lib/common';
+
 import { styled } from '@/stitches.config';
-import Image from 'next/image';
 
 const SummonerMatchDetailWrapper = styled('div', {
   display: 'flex',
@@ -43,6 +50,20 @@ const ViewDetail = styled('div', {
   bottom: 12,
   right: 9,
 });
+
+const Flex = styled('div', {
+  display: 'flex',
+});
+
+const FlexColumn = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+const FlexColumnWrap = styled(FlexColumn, {
+  flexWrap: 'wrap',
+});
+
 interface SummonerMatchDetailProps {
   game: TGame;
 }
@@ -51,8 +72,85 @@ export const SummonerMatchDetail = ({ game }: SummonerMatchDetailProps) => {
   console.log(game);
   return (
     <SummonerMatchDetailWrapper isWin={game.isWin}>
-      <Box css={{ width: 70 }}></Box>
-      <Box css={{ width: 100 }}></Box>
+      <Box css={{ width: 70, marginTop: 13 }}>
+        <FlexColumn css={{ alignItems: 'center', gap: 4 }}>
+          <Text
+            size="11"
+            height="13"
+            fontFamily="apple"
+            weight="bold"
+            color="greyish-brown"
+            css={{ letterSpacing: -0.42 }}
+          >
+            {game.gameType}
+          </Text>
+          <Text
+            size="11"
+            height="13"
+            fontFamily="apple"
+            color="greyish-brown"
+            css={{ letterSpacing: -0.42 }}
+          >
+            {formatDistance(new Date(game.createDate * 1000), Date.now(), {
+              locale: ko,
+            })}{' '}
+            전
+          </Text>
+          <Box
+            css={{
+              width: 27,
+              borderTop: `1px solid ${
+                game.isWin ? '$light-grey-blue-two' : '$pinkish-grey-three'
+              }`,
+            }}
+          />
+          <Text
+            size="11"
+            height="13"
+            fontFamily="apple"
+            weight="bold"
+            color={game.isWin ? 'ugly-blue' : 'scarlet'}
+            css={{
+              letterSpacing: -0.42,
+            }}
+          >
+            {game.isWin ? '승리' : '패배'}
+          </Text>
+          <Text size="11" height="13" fontFamily="apple" color="greyish-brown">
+            {Math.floor(game.gameLength / 60)}분 {game.gameLength % 60}초
+          </Text>
+        </FlexColumn>
+      </Box>
+      <Box css={{ width: 100 }}>
+        <Flex css={{ gap: 6, marginTop: 15 }}>
+          <Box css={{ flexShrink: 0 }}>
+            <Avartar>
+              <Image
+                alt="champion"
+                src={game.champion.imageUrl}
+                width={46}
+                height={46}
+              />
+            </Avartar>
+          </Box>
+          <FlexColumnWrap css={{ gap: 4, height: 48 }}>
+            <Image
+              alt="spell-1"
+              src={game.spells[0].imageUrl}
+              width={22}
+              height={22}
+            />
+            <Image
+              alt="spell-2"
+              src={game.spells[1].imageUrl}
+              width={22}
+              height={22}
+            />
+            <Image alt="peak-1" src={game.peak[0]} width={22} height={22} />
+            <Image alt="peak-2" src={game.peak[1]} width={22} height={22} />
+          </FlexColumnWrap>
+        </Flex>
+      </Box>
       <Box css={{ flex: 1 }}></Box>
       <Box css={{ width: 150 }}></Box>
       <Box css={{ width: 105 }}></Box>
