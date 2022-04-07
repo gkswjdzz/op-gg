@@ -15,6 +15,12 @@ const SummonerMatchDetailListWrapper = styled('div', {
   flexDirection: 'column',
 });
 
+const SummonerMatchDetailWrapper = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  marginTop: 16,
+  gap: 8,
+});
 interface SummonerMatchDetailListProps {
   summary: TSummary;
   champions: TChampion[];
@@ -37,9 +43,11 @@ export const SummonerMatchDetailList = ({
         champions={champions}
         positions={positions.sort((a, b) => b.games - a.games)}
       />
-      {games.map((game) => (
-        <SummonerMatchDetail key={game.createDate} game={game} />
-      ))}
+      <SummonerMatchDetailWrapper>
+        {games.map((game) => (
+          <SummonerMatchDetail key={game.createDate} game={game} />
+        ))}
+      </SummonerMatchDetailWrapper>
     </SummonerMatchDetailListWrapper>
   );
 };

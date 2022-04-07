@@ -58,6 +58,11 @@ export const positionImgSrc = {
   SUP: '/icons/icon-mostposition-sup.png',
 };
 
+export const viewDetailImgSrc = {
+  red: '/icons/icon-viewdetail-red.png',
+  blue: '/icons/icon-viewdetail-blue.png',
+};
+
 export const positionToHangul = {
   TOP: '탑',
   JNG: '정글',

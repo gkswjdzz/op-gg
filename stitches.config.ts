@@ -35,6 +35,7 @@ export const {
       'slate-grey': '#657070',
       charcoal: '#242929',
       'cool-grey': '#879292',
+      'cool-blue': '#549dc7',
       gunmetal: '#555e5e',
       bluish: '#1f8ecd',
       'brownish-grey': '#5e5e5e',
@@ -45,6 +46,11 @@ export const {
       'yellow-ochre': '#e19205',
       'bluey-green': '#2daf7f',
       reddish: '#c6443e',
+      'pinkish-grey': '#d6b5b2',
+      'pinkish-tan': '#e89c95',
+      'light-blue-grey': '#b9ceea',
+      'perrywinkle': '#7fb0e1',
+      'brownish-pink': '#c8817c'
     },
   },
 });
