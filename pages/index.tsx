@@ -33,7 +33,7 @@ const Content = styled('main', {
 
 const Box = styled('div', {});
 
-const Flex = styled('div', {
+const FlexGap10 = styled('div', {
   display: 'flex',
   gap: 10,
 });
@@ -48,16 +48,15 @@ const Home: NextPage = () => {
         <SummonerProfile />
       </SummonerProfileWrapper>
       <Content>
-        <Flex>
+        <FlexGap10>
           <Box>
             <SummonerTierInfo />
             <SummonerMostInfo />
           </Box>
           <Box css={{ flex: 1 }}>
             <SummonerMatchInfo />
-            <SummonerMatchDetail />
           </Box>
-        </Flex>
+        </FlexGap10>
       </Content>
     </HomeWrapper>
   );

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Text } from '@/components/Text';
+import { Avartar } from '@/components/Avartar';
 
 import { TWinRate } from '@/lib/API/useSummonerMostInfo';
 
@@ -24,15 +25,6 @@ const Li = styled('li', {
   height: 48,
   borderBottom: '1px solid $silver-three',
   padding: '0 15px',
-});
-
-const Avartar = styled('div', {
-  display: 'flex',
-  alignItems: 'center',
-  '& img': {
-    borderRadius: '100%',
-  },
-  flexShrink: 0,
 });
 
 const Progress = styled('div', {

@@ -1,6 +1,8 @@
 import Image from 'next/image';
 
 import { Text } from '@/components/Text';
+import { Avartar } from '@/components/Avartar';
+
 import { TChampion } from '@/lib/API/useSummonerMatch';
 import {
   getKDA,
@@ -16,15 +18,6 @@ const MostChampionMatchInfoWrapper = styled('div', {
   gap: 8,
   marginLeft: 16,
   alignItems: 'center',
-});
-
-const Avartar = styled('div', {
-  display: 'flex',
-  alignItems: 'center',
-  '& img': {
-    borderRadius: '100%',
-  },
-  flexShrink: 0,
 });
 
 const Flex = styled('div', {
