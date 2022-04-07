@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
 
 import { Header } from '@/components/header';
-import { SummonerMatchDetail } from '@/components/SummonerMatchDetail';
 import { SummonerMatchInfo } from '@/components/SummonerMatchInfo';
 import { SummonerMostInfo } from '@/components/SummonerMostInfo';
 import { SummonerProfile } from '@/components/SummonerProfile';
@@ -10,6 +9,8 @@ import { SummonerTierInfo } from '@/components/SummonerTierInfo';
 import { styled } from '@/stitches.config';
 
 const HomeWrapper = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
   backgroundColor: '$white',
 });
 
@@ -18,9 +19,13 @@ const HeaderWrapper = styled('div', {
   height: 97,
 });
 
-const SummonerProfileWrapper = styled('main', {
+const SummonerProfileWrapper = styled('div', {
   borderBottom: '1px solid $white-three',
   height: 175,
+});
+
+const ContentWrapper = styled('div', {
+  backgroundColor: '$white',
 });
 
 const Content = styled('main', {
@@ -29,6 +34,7 @@ const Content = styled('main', {
   display: 'flex',
   flexDirection: 'column',
   paddingTop: 10,
+  flex: 1,
 });
 
 const Box = styled('div', {});
@@ -47,17 +53,19 @@ const Home: NextPage = () => {
       <SummonerProfileWrapper>
         <SummonerProfile />
       </SummonerProfileWrapper>
-      <Content>
-        <FlexGap10>
-          <Box>
-            <SummonerTierInfo />
-            <SummonerMostInfo />
-          </Box>
-          <Box css={{ flex: 1 }}>
-            <SummonerMatchInfo />
-          </Box>
-        </FlexGap10>
-      </Content>
+      <ContentWrapper>
+        <Content>
+          <FlexGap10>
+            <Box>
+              <SummonerTierInfo />
+              <SummonerMostInfo />
+            </Box>
+            <Box css={{ flex: 1 }}>
+              <SummonerMatchInfo />
+            </Box>
+          </FlexGap10>
+        </Content>
+      </ContentWrapper>
     </HomeWrapper>
   );
 };
