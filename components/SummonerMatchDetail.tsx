@@ -1,11 +1,17 @@
+import { TGame } from '@/lib/API/useSummonerMatch';
 import { styled } from '@/stitches.config';
 
 const SummonerMatchDetailWrapper = styled('div', {});
 
-export const SummonerMatchDetail = () => {
+interface SummonerMatchDetailProps {
+  game: TGame;
+}
+
+export const SummonerMatchDetail = ({ game }: SummonerMatchDetailProps) => {
+  console.log(game);
   return (
     <SummonerMatchDetailWrapper>
-      Summoner MatchDetail
+      {JSON.stringify(game)}
     </SummonerMatchDetailWrapper>
   );
 };

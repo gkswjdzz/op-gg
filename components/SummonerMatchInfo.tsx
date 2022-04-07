@@ -1,6 +1,6 @@
 import * as Tabs from '@radix-ui/react-tabs';
 
-import { SummonerMatchInfoDetail } from '@/components/SummonerMatchInfoDetail';
+import { SummonerMatchDetailList } from './SummonerMatchDetailList';
 
 import { useSummonerMatch } from '@/lib/API/useSummonerMatch';
 
@@ -38,15 +38,12 @@ const TabsTrigger = styled(Tabs.Trigger, {
     color: '$bluish',
   },
 });
-const TabsContent = styled(Tabs.Content, {
-  border: '1px solid $silver-three',
-  borderTop: 'none',
-});
+const TabsContent = styled(Tabs.Content, {});
 
 export const SummonerMatchInfo = () => {
-  const { summary, champions, positions } = useSummonerMatch('이한정');
+  const { summary, champions, positions, games } = useSummonerMatch('이한정');
 
-  if (!summary || !champions || !positions) {
+  if (!summary || !champions || !positions || !games) {
     return null;
   }
 
@@ -59,14 +56,29 @@ export const SummonerMatchInfo = () => {
           <TabsTrigger value="free">자유랭크</TabsTrigger>
         </TabsList>
         <TabsContent value="all">
-          <SummonerMatchInfoDetail
+          <SummonerMatchDetailList
             summary={summary}
             champions={champions}
             positions={positions.sort((a, b) => b.games - a.games)}
+            games={games}
           />
         </TabsContent>
-        <TabsContent value="solo"></TabsContent>
-        <TabsContent value="free"></TabsContent>
+        <TabsContent value="solo">
+          <SummonerMatchDetailList
+            summary={summary}
+            champions={champions}
+            positions={positions.sort((a, b) => b.games - a.games)}
+            games={games.filter((game) => game.gameType === '솔랭')}
+          />
+        </TabsContent>
+        <TabsContent value="free">
+          <SummonerMatchDetailList
+            summary={summary}
+            champions={champions}
+            positions={positions.sort((a, b) => b.games - a.games)}
+            games={games.filter((game) => game.gameType === '자유 5:5 랭크')}
+          />
+        </TabsContent>
       </TabsRoot>
     </SummonerMatchInfoWrapper>
   );

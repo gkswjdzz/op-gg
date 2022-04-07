@@ -19,6 +19,8 @@ const SummonerMatchInfoDetailWrapper = styled('div', {
   height: 158,
   backgroundColor: '$white-five',
   padding: '0 16px',
+  border: '1px solid $silver-three',
+  borderTop: 'none',
 });
 
 const Flex = styled('div', {
