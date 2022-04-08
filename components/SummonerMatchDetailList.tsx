@@ -34,8 +34,6 @@ export const SummonerMatchDetailList = ({
   positions,
   games,
 }: SummonerMatchDetailListProps) => {
-  console.log('here');
-  console.log(games);
   return (
     <SummonerMatchDetailListWrapper>
       <SummonerMatchInfoDetail

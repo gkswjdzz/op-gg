@@ -113,6 +113,9 @@ export const Text = styled('span', {
       'warm-grey-three': {
         color: '$warm-grey-three',
       },
+      'black-two': {
+        color: '$black-two',
+      },
     },
   },
 });

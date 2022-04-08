@@ -44,6 +44,7 @@ export const {
       coral: '#ee5a52',
       'greyish-brown': '#555555',
       black: '#333333',
+      'black-two': '#000000',
       'yellow-ochre': '#e19205',
       'bluey-green': '#2daf7f',
       reddish: '#c6443e',
@@ -51,6 +52,7 @@ export const {
       'pinkish-grey': '#d6b5b2',
       'pinkish-grey-two': '#c0aba8',
       'pinkish-grey-three': '#d0a6a5',
+      'pinkish-grey-four': '#cb9e9a',
       'pinkish-tan': '#e89c95',
       'light-blue-grey': '#b9ceea',
       'light-grey-blue-two': '#94b9d6',
@@ -60,7 +62,8 @@ export const {
       scarlet: '#d0021b',
       tomato: '#ec4c48',
       'warm-purple': '#7f3590',
-      amethyst: '#8c51c5'
+      amethyst: '#8c51c5',
+      greyblue: '#7aa5c3',
     },
   },
 });

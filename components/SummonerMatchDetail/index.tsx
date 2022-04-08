@@ -10,6 +10,7 @@ import { multiKillKorean, viewDetailImgSrc } from '@/lib/common';
 
 import { styled } from '@/stitches.config';
 import { Badge } from '../Badge';
+import { SummonerMatchDetailItems } from './SummonerMatchDetailItems';
 
 const SummonerMatchDetailWrapper = styled('div', {
   display: 'flex',
@@ -225,8 +226,29 @@ export const SummonerMatchDetail = ({ game }: SummonerMatchDetailProps) => {
           </Flex>
         </FlexColumn>
       </Flex>
-      <Box css={{ width: 90 }}></Box>
-      <Box css={{ width: 105 }}></Box>
+      <Box css={{ width: 90, marginTop: 13 }}>
+        <FlexColumn
+          css={{
+            alignItems: 'center',
+            width: '100%',
+            gap: 6,
+            letterSpacing: -0.42,
+          }}
+        >
+          <Text size={11} height={13} fontFamily="apple" color="gunmetal">
+            레벨{game.champion.level}
+          </Text>
+          <Text size={11} height={13} fontFamily="apple" color="gunmetal">
+            {game.stats.general.cs} ({game.stats.general.csPerMin}) CS
+          </Text>
+          <Text size={11} height={13} fontFamily="apple" color="scarlet">
+            킬관여 {game.stats.general.contributionForKillRate}
+          </Text>
+        </FlexColumn>
+      </Box>
+      <Box css={{ width: 105, marginTop: 15 }}>
+        <SummonerMatchDetailItems game={game} />
+      </Box>
       <Box css={{ width: 84 }}></Box>
       <Box css={{ width: 84 }}></Box>
       <ViewDetailBox isWin={game.isWin}>
