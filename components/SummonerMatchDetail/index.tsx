@@ -5,12 +5,13 @@ import { ko } from 'date-fns/locale';
 import { Text } from '@/components/Text';
 import { Avartar } from '@/components/Avartar';
 
-import { TGame } from '@/lib/API/useSummonerMatch';
+import { TGame, useSummonerMatchDetail } from '@/lib/API/useSummonerMatch';
 import { multiKillKorean, viewDetailImgSrc } from '@/lib/common';
 
 import { styled } from '@/stitches.config';
 import { Badge } from '../Badge';
 import { SummonerMatchDetailItems } from './SummonerMatchDetailItems';
+import { SummonerMatchDetailTeams } from './SummonerMatchDetailTeams';
 
 const SummonerMatchDetailWrapper = styled('div', {
   display: 'flex',
@@ -71,6 +72,13 @@ interface SummonerMatchDetailProps {
 }
 
 export const SummonerMatchDetail = ({ game }: SummonerMatchDetailProps) => {
+  const name = '이한정';
+  const { teams } = useSummonerMatchDetail(name, game.gameId);
+
+  if (!teams) {
+    return null;
+  }
+
   return (
     <SummonerMatchDetailWrapper isWin={game.isWin}>
       <Box css={{ width: 70, marginTop: 13 }}>
@@ -249,8 +257,12 @@ export const SummonerMatchDetail = ({ game }: SummonerMatchDetailProps) => {
       <Box css={{ width: 105, marginTop: 15 }}>
         <SummonerMatchDetailItems game={game} />
       </Box>
-      <Box css={{ width: 84 }}></Box>
-      <Box css={{ width: 84 }}></Box>
+      <Box css={{ width: 84 }}>
+        <SummonerMatchDetailTeams team={teams[0]} />
+      </Box>
+      <Box css={{ width: 84 }}>
+        <SummonerMatchDetailTeams team={teams[1]} />
+      </Box>
       <ViewDetailBox isWin={game.isWin}>
         <ViewDetail>
           <Image

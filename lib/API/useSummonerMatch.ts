@@ -103,3 +103,33 @@ export const useSummonerMatch = (name: string) => {
 
   return { champions, positions, summary, games };
 };
+
+export interface TTeam {
+  teamId: number,
+  players:
+  {
+    champion: {
+      imageUrl: string,
+      level: number
+    },
+    summonerId: number,
+    summonerName: string
+  }[]
+}
+
+export interface TSummonerMatchDetail {
+  gameId: string,
+  teams: TTeam[]
+}
+
+export const useSummonerMatchDetail = (name: string, gameId: string) => {
+  const { data } = useSWR<TSummonerMatchDetail>(
+    `/api/_/summoner/${name}/matchDetail/${gameId}`,
+    fetcher,
+    { revalidateOnFocus: false }
+  );
+
+  const { gameId: resGameId, teams } = data || {};
+
+  return { gameId: resGameId, teams };
+};
