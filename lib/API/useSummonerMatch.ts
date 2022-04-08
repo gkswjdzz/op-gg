@@ -55,7 +55,7 @@ export interface TGame {
       contributionForKillRate: string;
       goldEarned: number;
       totalDamageDealtToChampions: number;
-      largestMultiKillString: string;
+      largestMultiKillString: 'Double Kill';
       opScoreBadge: string;
     };
     ward: {

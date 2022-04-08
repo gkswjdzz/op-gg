@@ -29,6 +29,7 @@ export const {
       'white-five': '#ededed',
       'warm-grey': '#727272',
       'warm-grey-two': '#999999',
+      'warm-grey-three': '#948e8d',
       'silver-two': '#d0d3d4',
       silver: '#e0e3e3',
       'silver-three': '#cdd2d2',
@@ -46,7 +47,9 @@ export const {
       'yellow-ochre': '#e19205',
       'bluey-green': '#2daf7f',
       reddish: '#c6443e',
+      'reddish-two': '#bf3b36',
       'pinkish-grey': '#d6b5b2',
+      'pinkish-grey-two': '#c0aba8',
       'pinkish-grey-three': '#d0a6a5',
       'pinkish-tan': '#e89c95',
       'light-blue-grey': '#b9ceea',
@@ -55,6 +58,9 @@ export const {
       'brownish-pink': '#c8817c',
       'ugly-blue': '#2c709b',
       scarlet: '#d0021b',
+      tomato: '#ec4c48',
+      'warm-purple': '#7f3590',
+      amethyst: '#8c51c5'
     },
   },
 });

@@ -44,6 +44,9 @@ export const Text = styled('span', {
       16: {
         height: 16,
       },
+      18: {
+        height: 18,
+      },
       20: {
         height: 20,
       },
@@ -92,6 +95,9 @@ export const Text = styled('span', {
       'greyish-brown': {
         color: '$greyish-brown',
       },
+      gunmetal: {
+        color: '$gunmetal',
+      },
       'slate-grey': {
         color: '$slate-grey',
       },
@@ -103,6 +109,9 @@ export const Text = styled('span', {
       },
       scarlet: {
         color: '$scarlet',
+      },
+      'warm-grey-three': {
+        color: '$warm-grey-three',
       },
     },
   },

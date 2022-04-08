@@ -9,7 +9,7 @@ import {
   getKDATextColor,
   getWinRate,
   positionImgSrc,
-  positionToHangul,
+  positionToKorean,
 } from '@/lib/common';
 
 import { styled } from '@/stitches.config';
@@ -173,7 +173,7 @@ export const SummonerMatchInfoDetail = ({
               />
               <FlexColumn>
                 <Text size="14" color="black" fontFamily="nanum">
-                  {positionToHangul[position.position]}
+                  {positionToKorean[position.position]}
                 </Text>
                 <PreferPositionSecondTexts>
                   <Text size="11" color="bluish">

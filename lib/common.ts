@@ -63,10 +63,14 @@ export const viewDetailImgSrc = {
   blue: '/icons/icon-viewdetail-blue.png',
 };
 
-export const positionToHangul = {
+export const positionToKorean = {
   TOP: '탑',
   JNG: '정글',
   MID: '미드',
   ADC: '원딜',
   SUP: '서포터',
 };
+
+export const multiKillKorean = {
+  'Double Kill': '더블킬'
+}

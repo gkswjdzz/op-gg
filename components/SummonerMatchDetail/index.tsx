@@ -6,9 +6,10 @@ import { Text } from '@/components/Text';
 import { Avartar } from '@/components/Avartar';
 
 import { TGame } from '@/lib/API/useSummonerMatch';
-import { viewDetailImgSrc } from '@/lib/common';
+import { multiKillKorean, viewDetailImgSrc } from '@/lib/common';
 
 import { styled } from '@/stitches.config';
+import { Badge } from '../Badge';
 
 const SummonerMatchDetailWrapper = styled('div', {
   display: 'flex',
@@ -69,7 +70,6 @@ interface SummonerMatchDetailProps {
 }
 
 export const SummonerMatchDetail = ({ game }: SummonerMatchDetailProps) => {
-  console.log(game);
   return (
     <SummonerMatchDetailWrapper isWin={game.isWin}>
       <Box css={{ width: 70, marginTop: 13 }}>
@@ -151,8 +151,81 @@ export const SummonerMatchDetail = ({ game }: SummonerMatchDetailProps) => {
           </FlexColumnWrap>
         </Flex>
       </Box>
-      <Box css={{ flex: 1 }}></Box>
-      <Box css={{ width: 150 }}></Box>
+      <Flex css={{ flex: 1 }}>
+        <FlexColumn
+          css={{
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 6,
+          }}
+        >
+          <Flex css={{ letterSpacing: -0.58 }}>
+            <Text
+              size="15"
+              height="18"
+              weight="bold"
+              fontFamily="helvetica"
+              color="gunmetal"
+            >
+              {game.stats.general.kill}
+            </Text>
+            <Text size="15" height="18" color="warm-grey-three">
+              &nbsp;/&nbsp;
+            </Text>
+            <Text
+              size="15"
+              height="18"
+              weight="bold"
+              fontFamily="helvetica"
+              color="scarlet"
+            >
+              {game.stats.general.death}
+            </Text>
+            <Text size="15" height="18" color="warm-grey-three">
+              &nbsp;/&nbsp;
+            </Text>
+            <Text
+              size="15"
+              height="18"
+              weight="bold"
+              fontFamily="helvetica"
+              color="gunmetal"
+            >
+              {game.stats.general.assist}
+            </Text>
+          </Flex>
+          <Flex css={{ letterSpacing: -0.42 }}>
+            <Text
+              size="11"
+              height="13"
+              weight="bold"
+              fontFamily="helvetica"
+              color="black"
+            >
+              {game.stats.general.kdaString}
+            </Text>
+            <Text
+              size="11"
+              height="13"
+              weight="bold"
+              fontFamily="apple"
+              color="gunmetal"
+            >
+              &nbsp;평점
+            </Text>
+          </Flex>
+          <Flex css={{ gap: 4 }}>
+            {game.stats.general.largestMultiKillString && (
+              <Badge multiKill>
+                {multiKillKorean[game.stats.general.largestMultiKillString]}
+              </Badge>
+            )}
+            {game.stats.general.opScoreBadge && <Badge ace>ACE</Badge>}
+          </Flex>
+        </FlexColumn>
+      </Flex>
+      <Box css={{ width: 90 }}></Box>
       <Box css={{ width: 105 }}></Box>
       <Box css={{ width: 84 }}></Box>
       <Box css={{ width: 84 }}></Box>
