@@ -116,6 +116,9 @@ export const Text = styled('span', {
       'black-two': {
         color: '$black-two',
       },
+      'white-two': {
+        color: '$white-two',
+      },
     },
   },
 });

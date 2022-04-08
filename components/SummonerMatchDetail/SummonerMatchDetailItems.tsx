@@ -1,5 +1,10 @@
 import Image from 'next/image';
+import path from 'path';
+
 import { Text } from '@/components/Text';
+import { ItemTooltip } from './Tooltip';
+
+import { useItemInfo } from '@/lib/API/useItemInfo';
 
 import { TGame } from '@/lib/API/useSummonerMatch';
 
@@ -48,6 +53,7 @@ const BlankItem = styled('div', {
     },
   },
 });
+
 interface SummonerMatchDetailItemsProps {
   game: TGame;
 }
@@ -55,18 +61,48 @@ interface SummonerMatchDetailItemsProps {
 export const SummonerMatchDetailItems = ({
   game,
 }: SummonerMatchDetailItemsProps) => {
+  const { itemInfo } = useItemInfo();
+
+  const itemIdFromItemImageUrl = (imageUrl: string): number => {
+    const splitted = imageUrl.split('/');
+    const filename = splitted[splitted.length - 1];
+    const id = path.parse(filename).name;
+    return Number(id);
+  };
+
+  if (!itemInfo) {
+    return null;
+  }
+
   return (
     <SummonerMatchDetailItemsWrapper>
       <Items>
         {game.items.map((item, index) => (
-          <Item key={item.imageUrl + index}>
-            <Image
-              alt="item-image"
-              src={item.imageUrl}
-              width={22}
-              height={22}
-            />
-          </Item>
+          <ItemTooltip.Provider key={item.imageUrl + index}>
+            <ItemTooltip.Root delayDuration={200}>
+              <ItemTooltip.Trigger>
+                <Item>
+                  <Image
+                    alt="item-image"
+                    src={item.imageUrl}
+                    width={22}
+                    height={22}
+                  />
+                </Item>
+              </ItemTooltip.Trigger>
+              <ItemTooltip.Content side="top" sideOffset={8}>
+                <Text
+                  size="11"
+                  color="white-two"
+                  fontFamily="apple"
+                  css={{ lineHeight: 1.36 }}
+                >
+                  {itemInfo[itemIdFromItemImageUrl(item.imageUrl)].plaintext}
+                </Text>
+                <ItemTooltip.Arrow />
+              </ItemTooltip.Content>
+            </ItemTooltip.Root>
+          </ItemTooltip.Provider>
         ))}
         {Array(7 - game.items.length)
           .fill('')
