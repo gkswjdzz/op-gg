@@ -1,4 +1,5 @@
-import type { NextPage } from 'next';
+import type { GetServerSidePropsContext, NextPage } from 'next';
+import { RecoilRoot, useSetRecoilState } from 'recoil';
 
 import { Header } from '@/components/header';
 import { SummonerMatchInfo } from '@/components/SummonerMatchInfo';
@@ -7,6 +8,8 @@ import { SummonerProfile } from '@/components/SummonerProfile';
 import { SummonerTierInfo } from '@/components/SummonerTierInfo';
 
 import { styled } from '@/stitches.config';
+import { useEffect } from 'react';
+import { summonerState } from '@/components/atom/summonerState';
 
 const HomeWrapper = styled('div', {
   display: 'flex',
@@ -44,7 +47,23 @@ const FlexGap10 = styled('div', {
   gap: 10,
 });
 
-const Home: NextPage = () => {
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const { query } = ctx;
+
+  return {
+    props: { summonerName: query.name || null },
+  };
+}
+
+const Home: NextPage = ({ summonerName }: any) => {
+  const setSummoner = useSetRecoilState(summonerState);
+
+  useEffect(() => {
+    if (summonerName) {
+      setSummoner({ name: summonerName });
+    }
+  }, [setSummoner, summonerName]);
+
   return (
     <HomeWrapper>
       <HeaderWrapper>

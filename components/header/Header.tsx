@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import { styled } from '@/stitches.config';
 import { useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { summonerState } from '../atom/summonerState';
+import { useRouter } from 'next/router';
 
 const StyledHeader = styled('header', {
   width: 1000,
@@ -43,11 +42,15 @@ const EndAdormentWrapper = styled('div', {
 
 export const Header = () => {
   const [summonerName, setSummonerName] = useState('');
-  const [summoner, setSummoner] = useRecoilState(summonerState);
+  const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSummoner({ ...summoner, name: summonerName });
+    router.push({
+      query: {
+        name: summonerName,
+      },
+    });
     setSummonerName('');
   };
 
