@@ -5,8 +5,12 @@ export const Badge = styled('div', {
   color: '$white-two',
   letterSpacing: -0.38,
   fontFamily: '$apple',
-  padding: '3px 5px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '0px 5px',
   fontSize: 10,
+  height: 18,
 
   variants: {
     multiKill: {
