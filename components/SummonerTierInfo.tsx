@@ -1,6 +1,10 @@
+import { useRecoilValue } from 'recoil';
 import Image from 'next/image';
+
 import { Text } from '@/components/Text';
 import { useSummoner, TLeague } from '@/lib/API/useSummoner';
+
+import { summonerState } from './atom/summonerState';
 
 import { styled } from '@/stitches.config';
 
@@ -64,7 +68,8 @@ const League = (league: TLeague) => {
   );
 };
 export const SummonerTierInfo = () => {
-  const { leagues } = useSummoner('이한정');
+  const { name } = useRecoilValue(summonerState);
+  const { leagues } = useSummoner(name);
 
   if (!leagues) {
     return null;

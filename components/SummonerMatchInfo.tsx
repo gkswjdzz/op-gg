@@ -1,6 +1,8 @@
+import { useRecoilValue } from 'recoil';
 import * as Tabs from '@radix-ui/react-tabs';
 
 import { SummonerMatchDetailList } from './SummonerMatchDetailList';
+import { summonerState } from './atom/summonerState';
 
 import { useSummonerMatch } from '@/lib/API/useSummonerMatch';
 
@@ -41,7 +43,11 @@ const TabsTrigger = styled(Tabs.Trigger, {
 const TabsContent = styled(Tabs.Content, {});
 
 export const SummonerMatchInfo = () => {
-  const { summary, champions, positions, games } = useSummonerMatch('이한정');
+  const summoner = useRecoilValue(summonerState);
+
+  const { summary, champions, positions, games } = useSummonerMatch(
+    summoner.name
+  );
 
   if (!summary || !champions || !positions || !games) {
     return null;

@@ -1,3 +1,4 @@
+import { useRecoilValue } from 'recoil';
 import Image from 'next/image';
 import { formatDistance } from 'date-fns';
 import { ko } from 'date-fns/locale';
@@ -12,6 +13,7 @@ import { styled } from '@/stitches.config';
 import { Badge } from '../Badge';
 import { SummonerMatchDetailItems } from './SummonerMatchDetailItems';
 import { SummonerMatchDetailTeams } from './SummonerMatchDetailTeams';
+import { summonerState } from '../atom/summonerState';
 
 const SummonerMatchDetailWrapper = styled('div', {
   display: 'flex',
@@ -72,7 +74,7 @@ interface SummonerMatchDetailProps {
 }
 
 export const SummonerMatchDetail = ({ game }: SummonerMatchDetailProps) => {
-  const name = '이한정';
+  const { name } = useRecoilValue(summonerState);
   const { teams } = useSummonerMatchDetail(name, game.gameId);
 
   if (!teams) {

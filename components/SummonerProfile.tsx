@@ -1,7 +1,9 @@
+import { useRecoilValue } from 'recoil';
 import Image from 'next/image';
 
 import { Text } from '@/components/Text';
 import { useSummoner } from '@/lib/API/useSummoner';
+import { summonerState } from './atom/summonerState';
 
 import { styled } from '@/stitches.config';
 
@@ -73,6 +75,8 @@ function numberWithCommas(x: number) {
 }
 
 export const SummonerProfile = () => {
+  const { name: summonerName } = useRecoilValue(summonerState);
+
   const {
     previousTiers,
     name,
@@ -80,7 +84,7 @@ export const SummonerProfile = () => {
     profileBorderImageUrl,
     profileImageUrl,
     ladderRank,
-  } = useSummoner('이한정');
+  } = useSummoner(summonerName);
 
   if (!previousTiers || !profileImageUrl || !ladderRank) {
     return null;

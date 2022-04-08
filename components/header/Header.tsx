@@ -1,5 +1,8 @@
 import Image from 'next/image';
 import { styled } from '@/stitches.config';
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { summonerState } from '../atom/summonerState';
 
 const StyledHeader = styled('header', {
   width: 1000,
@@ -8,7 +11,7 @@ const StyledHeader = styled('header', {
   display: 'flex',
 });
 
-const InputWrapper = styled('div', {
+const InputWrapper = styled('form', {
   width: 260,
   height: 'fit-content',
   marginLeft: 'auto',
@@ -39,10 +42,24 @@ const EndAdormentWrapper = styled('div', {
 });
 
 export const Header = () => {
+  const [summonerName, setSummonerName] = useState('');
+  const [summoner, setSummoner] = useRecoilState(summonerState);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSummoner({ ...summoner, name: summonerName });
+    setSummonerName('');
+  };
+
   return (
     <StyledHeader>
-      <InputWrapper>
-        <StyledInput type="text" placeholder="소환사명,챔피언..." />
+      <InputWrapper onSubmit={handleSubmit}>
+        <StyledInput
+          type="text"
+          placeholder="소환사명,챔피언..."
+          value={summonerName}
+          onChange={(e) => setSummonerName(e.target.value)}
+        />
         <EndAdormentWrapper>
           <Image
             src="/icons/icon-gg.svg"

@@ -1,8 +1,10 @@
+import { useRecoilValue } from 'recoil';
 import * as Tabs from '@radix-ui/react-tabs';
 
 import { SummonerMostDetail } from '@/components/SummonerMostDetail';
 import { SummonerMostWinLoss } from '@/components/SummonerMostWinLoss';
 
+import { summonerState } from './atom/summonerState';
 import { useSummonerMostInfo } from '@/lib/API/useSummonerMostInfo';
 
 import { styled } from '@/stitches.config';
@@ -50,7 +52,9 @@ const TabsContent = styled(Tabs.Content, {
 });
 
 export const SummonerMostInfo = () => {
-  const { champions, recentWinRate } = useSummonerMostInfo('이한정');
+  const summoner = useRecoilValue(summonerState);
+
+  const { champions, recentWinRate } = useSummonerMostInfo(summoner.name);
 
   if (!champions || !recentWinRate) {
     return null;
